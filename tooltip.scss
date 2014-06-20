@@ -1,0 +1,80 @@
+.tooltip {	
+	display:none;
+	position:absolute;
+	behavior: url("/assets/PIE.htc");
+	border: 1px solid $blue3; 
+	@include border-radius(4px);
+	@include box-shadow(0px 2px 4px rgba(128, 128, 128, .4));
+	width:300px;
+	@media(max(403)) {
+		width:250px;
+	}
+	.tooltip-body {
+		background-color: $blue1;
+		position: relative;
+		behavior: url("/assets/PIE.htc");
+		@include border-radius(3px);
+		box-sizing: border-box;
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		padding: 16px; 		
+		z-index: 1;
+	}
+	.notch {
+		position: absolute;
+		top: -10px;
+		left: 20px;
+		margin: 0;
+		border: 1px solid $blue3;
+		@include rotatedBox(45deg, 20px, 20px);
+		background-color: $blue1;
+		@include box-shadow(0 2px 4px rgba(128, 128, 128, .4));
+	}
+
+
+	// set the vertical placement
+	&.bottomleft, &.bottomcenter, &.bottomright {
+		.notch { 
+			top: -10px;
+		}
+	}		
+	&.topleft, &.topcenter, &.topright {
+		.notch {
+			bottom: -10px;
+			top: auto;
+		}
+	}
+	// set the horizontal placement
+	&.topleft, &.bottomleft {
+			left:auto;
+			right:20px;
+		}
+	}
+	&.topright, &.bottomright {
+		.notch {
+			right:auto;
+			left:20px;
+		}
+	}
+	&.topcenter, &.bottomcenter {
+		.notch {
+			left:47%;
+		}
+	}
+	&.left {
+		margin-top: -9px; /* diagonal of tooltip - line height */
+		.notch {
+			right: -10px;
+			top: 20px;
+			left:auto;
+		}
+	}
+	&.right {
+		margin-top: -9px;
+		.notch {
+			left: -10px;
+			top: 20px;
+			right:auto;
+		}
+	}
+}
